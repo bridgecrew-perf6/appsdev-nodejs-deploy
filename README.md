@@ -68,3 +68,8 @@
 - 每个文件是一个模块，有自己的作用域，也就是说一个文件只能有一个模块
 - 在模块内部 module 变量代表模块本身
 - module.exports 属性代表模块对外接口
+
+```javascript
+node demo/01_run.js
+node --inspect-brk demo/01_run.js
+```
