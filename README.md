@@ -57,6 +57,11 @@
 - 本地代码构建
 - 实用工具开发
 
+```javascript
+node demo/01_run.js
+node --inspect-brk demo/01_run.js
+```
+
 ## 环境 & 调试
 
 ### 环境
@@ -69,7 +74,11 @@
 - 在模块内部 module 变量代表模块本身
 - module.exports 属性代表模块对外接口
 
-```javascript
-node demo/01_run.js
-node --inspect-brk demo/01_run.js
-```
+### require 规则
+- '/' 表示绝对路径，'./' 表示相对于当前文件所在的路径
+- 支持 js、json、node 扩展名，不写的话将依次尝试
+- 不写路径则认为是 build-in 模块或者各级 node_modules 内的第三方模块
+
+### require 特性
+- module 被加载的时候执行，加载后缓存（只加载一次）
+- 一旦出现某个模块被循环加载，就只输出已经执行的部门，还未执行的部分不会输出
