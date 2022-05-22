@@ -82,3 +82,7 @@ node --inspect-brk demo/01_run.js
 ### require 特性
 - module 被加载的时候执行，加载后缓存（只加载一次）
 - 一旦出现某个模块被循环加载，就只输出已经执行的部门，还未执行的部分不会输出
+
+```javascript
+node demo/05_main.js
+```
