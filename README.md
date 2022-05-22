@@ -41,5 +41,19 @@
 - 进程：是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位
 - 多进程：启动多个进程，多个进程可以一块执行多个任务
 
+### 线程
+- 线程：进程内一个相对独立的、可调度的执行单元，与同属一个进程的线程共享进程的资源
+- 多线程：启动一个进程，在一个进程内启动多个线程，这样，多个线程也可以一块执行多个任务
+
+### NodeJs 单线程
+- 单线程只是针对主进程，I/O操作系统底层是多线程调度的
+- 单线程并不是单进程
+
 ### NodeJs 工作模型
-![](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-work-model.png)
+![NodeJs 工作模型图](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-work-model.png)
+
+### NodeJs 常见场景
+- Web Server
+- 本地代码构建
+- 实用工具开发
+
