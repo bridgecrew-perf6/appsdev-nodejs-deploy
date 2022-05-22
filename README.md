@@ -1,6 +1,6 @@
 # appsdev-nodejs-deploy
 
-### 课程大纲
+## 课程大纲
 - NodeJs 介绍
 - 简单 Web Server
 - 调试 & 项目初始化
@@ -8,5 +8,8 @@
 - 基础 API
 - NodeJs 爬虫示例
 
-### NodeJs 是什么
-- NodeJs is a JavaScript runtime built on Chrome's V8
+## NodeJs 是什么
+- Node.js is a JavaScript runtime built on Chrome's V8
+- Node.js uses an event-driven, non-blocking I/O model
+
+### 非阻塞I/O - Non-blocking I/O model
