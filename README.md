@@ -42,4 +42,4 @@
 - 多进程：启动多个进程，多个进程可以一块执行多个任务
 
 ### NodeJs 工作模型
-![](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-work-model.jpg)
+![](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-work-model.png)
