@@ -1,6 +1,6 @@
 /*
 normalize join resolve
-basename extname dirname
+basename dirname extname
 parse format
 sep delimiter win32 posix
 */

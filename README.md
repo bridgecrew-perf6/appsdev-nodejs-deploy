@@ -200,8 +200,19 @@ console.log(join('/usr', '../local', 'bin/'));
 ```
 
 > resolve
+
 ```javascript
 const { resolve } = require('path');
 console.log(resolve('./'));
+```
+
+> basename, extname, dirname
+
+```javascript
+const { basename, dirname, extname } = require('path');
+const filePath = '/usr/local/bin/no.txt';
+console.log(basename(filePath));
+console.log(dirname(filePath));
+console.log(extname(filePath));
 ```
 
