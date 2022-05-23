@@ -355,6 +355,8 @@ for (let i = 0; i < buf.length; i+=5) {
 
 例子：一个绑定了一个监听器的 EventEmitter 实例。eventEmitter.on() 方法用于注册监听器，eventEmitter.emit()方法用于触发事件。
 
+> event
+
 ```javascript
 const EventEmitter = require('events');
 
