@@ -384,3 +384,17 @@ ce.on('error', (err, time) => {
 ce.emit('error', new Error('oops!'), Date.now());
 ```
 
+> event with once
+```javascript
+const EventEmitter = require('events');
+
+class CustomEvent extends EventEmitter {}
+
+const ce = new CustomEvent();
+ce.once('test', () => {
+  console.log('Test event');
+});
+setInterval(() => {
+  ce.emit('test');
+}, 500);
+```
