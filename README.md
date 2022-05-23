@@ -115,8 +115,8 @@ global.testVar = 1000;
 
 ### process
 
-```javascript
 - process.argv, argv0, execArgv, execPath
+```javascript
 const { argv, argv0, execArgv, execPath } = process;
 argv.forEach(item => { console.log(item); });
 console.log(argv0);
