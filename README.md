@@ -319,5 +319,28 @@ console.log(buf4.equals(buf6));
 
 console.log(buf4.indexOf('st'));
 console.log(buf4.indexOf('ast'));
+
+const buf7 = Buffer.allocUnsafe(5);
+buf6.copy(buf7, 0 ,i);
+```
+
+> string_decoder
+
+```javascript
+const stringDecode = require('string_decoder');
+const decoder = new stringDecode.StringDecoder('utf-8');
+const buf = Buffer.from('中文字符串！');
+
+for(let i = 0; i < buf.length; i+=5) {
+  const b = Buffer.allocUnsafe(5);
+  buf.copy(b, 0 ,i);
+  console.log(b.toString());
+}
+
+for(let i = 0; i < buf.length; i+=5) {
+  const b = Buffer.allocUnsafe(5);
+  buf.copy(b, 0 ,i);
+  console.log(decoder.write(b));
+}
 ```
 
