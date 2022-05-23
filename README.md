@@ -153,4 +153,6 @@ process.nextTick(() => {
 ### 调试
 
 - Inspector
+> `https://nodejs.org/en/docs/guides/debugging-getting-started/`
+
 - VS Code
