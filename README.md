@@ -461,3 +461,23 @@ fs.readFile('./demo/32_readfile.js', (err, data) => {
 const data = fs.readFileSync('./demo/01_run.js', 'utf8');
 console.log(data);
 ```
+
+> writeFile
+
+```javascript
+const fs = require('fs');
+
+const content = Buffer.from('This is a test.');
+
+// fs.writeFile('./demo/text', 'This is a test', {
+//     encoding: 'utf8'
+// }, err => {
+//     if (err) throw err;
+//     console.log('done!');
+// })
+
+fs.writeFile('./demo/text', content, err => {
+    if (err) throw err;
+    console.log('done!');
+})
+```
