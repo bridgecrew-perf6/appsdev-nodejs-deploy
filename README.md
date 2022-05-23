@@ -113,7 +113,7 @@ node demo/08_main.js
 global.testVar = 1000;
 ```
 
-- process
+### process
 
 ```javascript
 const { argv, argv0, execArgv, execPath } = process;
@@ -148,5 +148,3 @@ process.nextTick(() => {
     console.log('nextTick');
 });
 ```
-
-
