@@ -115,7 +115,7 @@ global.testVar = 1000;
 
 ### process
 
-- process.argv, process.argv0, process.execArgv, process.execPath
+> process.argv, process.argv0, process.execArgv, process.execPath
 ```javascript
 const { argv, argv0, execArgv, execPath } = process;
 argv.forEach(item => { console.log(item); });
@@ -124,18 +124,18 @@ console.log(execArgv);
 console.log(execPath);
 ```
 
-- process.env
+> process.env
 ```javascript
 const { env } = process;
 console.log(env);
 ```
 
-- process.cwd()
+> process.cwd()
 ```javascript
 console.log(process.cwd());
 ```
 
-- process.nextTick(() => {})
+> process.nextTick(() => {})
 ```javascript
 setImmediate(() => {
     console.log('setImmediate');
