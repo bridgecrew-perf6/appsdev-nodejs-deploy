@@ -206,7 +206,7 @@ const { resolve } = require('path');
 console.log(resolve('./'));
 ```
 
-> basename, extname, dirname
+> basename, dirname, extname
 
 ```javascript
 const { basename, dirname, extname } = require('path');
@@ -216,3 +216,12 @@ console.log(dirname(filePath));
 console.log(extname(filePath));
 ```
 
+> parse, format
+
+```javascript
+const { parse, format } = require('path');
+const filePath = '/usr/local/node_modules/n/package.json';
+const ret = parse(filePath);
+console.log(ret);
+console.log(format(ret));
+```
