@@ -135,7 +135,7 @@ console.log(env);
 console.log(process.cwd());
 ```
 
-- process.nextTick()
+- process.nextTick(() => {})
 ```javascript
 setImmediate(() => {
     console.log('setImmediate');
