@@ -80,25 +80,26 @@ node --inspect-brk demo/01_run.js
 - 不写路径则认为是 build-in 模块或者各级 node_modules 内的第三方模块
 
 ### require 特性
-- module 被加载的时候执行，加载后缓存（只加载一次）
-- 一旦出现某个模块被循环加载，就只输出已经执行的部门，还未执行的部分不会输出
+> module 被加载的时候执行，加载后缓存（只加载一次）
+>
+> 一旦出现某个模块被循环加载，就只输出已经执行的部门，还未执行的部分不会输出
 
 ```javascript
 node demo/05_main.js
 ```
 
-- 使用 build-in 模块
+> 使用 build-in 模块
 ```javascript
 cd demo
 node 06_fs.js
 ```
 
-- 使用第三方模块
+> 使用第三方模块
 ```javascript
 npm install chalk@2.0.1
 node demo/07_chalk.js
 ```
-- exports VS module.exports
+> exports VS module.exports
 ```javascript
 node demo/08_main.js
 ```
@@ -107,11 +108,7 @@ node demo/08_main.js
 - CommonJS
 - Buffer, process, console
 - timer
-
 - global
-```javascript
-global.testVar = 1000;
-```
 
 ### process
 
@@ -148,6 +145,11 @@ setTimeout(() => {
 process.nextTick(() => {
     console.log('nextTick');
 });
+```
+
+### global
+```javascript
+global.testVar = 1000;
 ```
 
 ### 调试
