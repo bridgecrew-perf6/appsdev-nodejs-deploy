@@ -428,3 +428,36 @@ setTimeout(() => {
   ce.removeAllListeners('test');
 }, 1500);
 ```
+
+### fs
+
+文件 I/O 是由简单封装的标准 POSIX 函数提供。通过 require('fs') 使用该模块，所有的方法都有异步和同步的形式。
+
+异步方法的最后一个参数都是一个回调函数，传给回调函数的参数取决于具体方法，但回调函数的第一个参数都会保留给异常。如果操作成功完成，则第一个参数会是 null 或 undefined。
+
+当使用同步方法时，任何异常都会被立即抛出，可以使用 try / catch 来处理异常，或让异常向上冒泡。
+
+异步方法的例子：
+
+```javascript
+const fs = require('fs');
+fs.unlink('tmp/hello', (err) => {
+  if (err) throw err;
+  consloe.log('成功删除 /tmp/hello);
+});
+```
+
+> readfile
+
+```javascript
+const fs = require('fs');
+
+fs.readFile('./demo/32_readfile.js', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+  console.log(data.toString());
+});
+
+const data = fs.readFileSync('./demo/01_run.js', 'utf8');
+console.log(data);
+```
