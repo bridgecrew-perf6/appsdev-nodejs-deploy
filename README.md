@@ -532,3 +532,37 @@ fs.readdir('./demo', (err, files) => {
 });
 ```
 
+> mkdir
+
+```javascript
+const fs = require('fs');
+
+fs.mkdir('./demo/test', err => {
+  if (err) throw err;
+  console.log('done!');
+});
+```
+
+> rmdir
+
+```javascript
+const fs = require('fs');
+
+fs.rmdir('./demo/test', err => {
+  if (err) throw err;
+  console.log('done!');
+});
+```
+
+> watch
+
+```javascript
+const fs = require('fs');
+
+fs.watch('./demo', {
+  recursive: true
+}, (eventType, filename) => {
+  console.log(eventType, filename);
+});
+```
+
