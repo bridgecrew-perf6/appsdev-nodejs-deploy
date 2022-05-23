@@ -149,3 +149,8 @@ process.nextTick(() => {
     console.log('nextTick');
 });
 ```
+
+### 调试
+
+- Inspector
+- VS Code
