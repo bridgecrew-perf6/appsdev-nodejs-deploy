@@ -98,3 +98,55 @@ node 06_fs.js
 npm install chalk@2.0.1
 node demo/07_chalk.js
 ```
+- exports VS module.exports
+```javascript
+node demo/08_main.js
+```
+
+### global
+- CommonJS
+- Buffer, process, console
+- timer
+
+- global
+```javascript
+global.testVar = 1000;
+```
+
+- process
+
+```javascript
+const { argv, argv0, execArgv, execPath } = process;
+argv.forEach(item => { console.log(item); });
+console.log(argv0);
+console.log(execArgv);
+console.log(execPath);
+```
+
+- process.env
+```javascript
+const { env } = process;
+console.log(env);
+```
+
+- process.cwd()
+```javascript
+console.log(process.cwd());
+```
+
+- process.nextTick()
+```javascript
+setImmediate(() => {
+    console.log('setImmediate');
+});
+
+setTimeout(() => {
+    console.log('setTimeout');
+}, 0);
+
+process.nextTick(() => {
+    console.log('nextTick');
+});
+```
+
+
