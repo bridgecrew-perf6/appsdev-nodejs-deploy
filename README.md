@@ -154,7 +154,7 @@ global.testVar = 1000;
 
 ### 调试
 
-- Inspector
+> Inspector
 
 > #### [Chrome DevTools 55+, Microsoft Edge](https://nodejs.org/en/docs/guides/debugging-getting-started/)
 > 
@@ -163,4 +163,4 @@ global.testVar = 1000;
 > - Option 2: Copy the devtoolsFrontendUrl from the output of /json/list (see above) or the --inspect hint text and paste into Chrome.
 
 
-- VS Code
+> VS Code
