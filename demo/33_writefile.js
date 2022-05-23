@@ -13,3 +13,4 @@ fs.writeFile('./demo/text', content, err => {
   if (err) throw err;
   console.log('done!');
 })
+
