@@ -357,8 +357,11 @@ for (let i = 0; i < buf.length; i+=5) {
 
 ```javascript
 const EventEmitter = require('events');
+
 class MyEmitter extends EventEmitter {}
+
 const myEmitter = new MyEmitter();
+
 myEmitter.on('event', () => {
   console.log('触发了一个事件！');
 });
