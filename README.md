@@ -152,7 +152,7 @@ process.nextTick(() => {
 global.testVar = 1000;
 ```
 
-### 调试
+### Debug
 
 > Inspector
 
@@ -164,4 +164,9 @@ global.testVar = 1000;
 
 > VS Code
 
+- debug
 ![VS Vode Debug](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-vscode-debug.png)
+
+- debug with condition
+![VS Vode Debug](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-vscode-debug-condition.png)
+
