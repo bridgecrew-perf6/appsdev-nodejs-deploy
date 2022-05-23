@@ -153,12 +153,12 @@ process.nextTick(() => {
 ### 调试
 
 - Inspector
+
+> #### [Chrome DevTools 55+, Microsoft Edge](https://nodejs.org/en/docs/guides/debugging-getting-started/)
 > 
-> [Chrome DevTools 55+, Microsoft Edge](https://nodejs.org/en/docs/guides/debugging-getting-started/)
-> 
-> Option 1: Open chrome://inspect in a Chromium-based browser or edge://inspect in Edge. Click the Configure button and ensure your target host and port are listed.
+> - Option 1: Open chrome://inspect in a Chromium-based browser or edge://inspect in Edge. Click the Configure button and ensure your target host and port are listed.
 >
-> Option 2: Copy the devtoolsFrontendUrl from the output of /json/list (see above) or the --inspect hint text and paste into Chrome.
-> 
+> - Option 2: Copy the devtoolsFrontendUrl from the output of /json/list (see above) or the --inspect hint text and paste into Chrome.
+
 
 - VS Code
