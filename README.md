@@ -199,3 +199,9 @@ console.log(join('/usr', 'local', 'bin/'));
 console.log(join('/usr', '../local', 'bin/'));
 ```
 
+> resolve
+```javascript
+const { resolve } = require('path');
+console.log(resolve('./'));
+```
+
