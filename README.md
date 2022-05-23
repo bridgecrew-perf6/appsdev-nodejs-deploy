@@ -163,4 +163,5 @@ global.testVar = 1000;
 > - Option 2: Copy the devtoolsFrontendUrl from the output of /json/list (see above) or the --inspect hint text and paste into Chrome.
 
 > VS Code
+
 ![VS Vode Debug](https://raw.githubusercontent.com/sipingme/appsdev-nodejs-deploy/master/readme/nodejs-vscode-debug.png)
