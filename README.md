@@ -115,6 +115,7 @@ node demo/08_main.js
 > process.argv, process.argv0, process.execArgv, process.execPath
 ```javascript
 const { argv, argv0, execArgv, execPath } = process;
+
 argv.forEach(item => { console.log(item); });
 console.log(argv0);
 console.log(execArgv);
@@ -187,6 +188,7 @@ global.testVar = 1000;
 
 ```javascript
 const { normalize } = require('path');
+
 console.log(normalize('/usr//local/bin'));
 console.log(normalize('/usr//local/../bin'));
 ```
@@ -195,6 +197,7 @@ console.log(normalize('/usr//local/../bin'));
 
 ```javascript
 const { join } = require('path');
+
 console.log(join('/usr', 'local', 'bin/'));
 console.log(join('/usr', '../local', 'bin/'));
 ```
@@ -203,6 +206,7 @@ console.log(join('/usr', '../local', 'bin/'));
 
 ```javascript
 const { resolve } = require('path');
+
 console.log(resolve('./'));
 ```
 
@@ -211,6 +215,7 @@ console.log(resolve('./'));
 ```javascript
 const { basename, dirname, extname } = require('path');
 const filePath = '/usr/local/bin/no.txt';
+
 console.log(basename(filePath));
 console.log(dirname(filePath));
 console.log(extname(filePath));
@@ -222,6 +227,7 @@ console.log(extname(filePath));
 const { parse, format } = require('path');
 const filePath = '/usr/local/node_modules/n/package.json';
 const ret = parse(filePath);
+
 console.log(ret);
 console.log(format(ret));
 ```
@@ -230,6 +236,7 @@ console.log(format(ret));
 
 ```javascript
 const { sep, delimiter, win32, posix } = require('path');
+
 console.log('sep:', sep);
 console.log('win sep:', win32.sep);
 console.log('PATH:', process.env.PATH);
@@ -242,6 +249,7 @@ console.log('win delimiter', win32.delimiter);
 ```javascript
 const path = require('path');
 const mod = require('./02_cusmod');
+
 console.log(mod.testVar);
 console.log('__dirname', __dirname);
 console.log('process.cwd()', process.cwd());
@@ -260,9 +268,28 @@ console.log("path.resolve('./')", path.resolve('./'));
 console.log(Buffer.alloc(10));
 console.log(Buffer.alloc(20));
 console.log(Buffer.alloc(5, 1));
+
 console.log(Buffer.allocUnsafe(5, 1));
+
 console.log(Buffer.from([1, 2, 3]));
 console.log(Buffer.from('test'));
 console.log(Buffer.from('test', 'base64'));
 ```
 
+>  Buffer.byteLength, Buffer.isBuffer(), Buffer.concat()
+
+```javascript
+console.log(Buffer.byteLength('test'));
+console.log(Buffer.byteLength('测试'));
+
+console.log(Buffer.isBuffer({}));
+console.log(Buffer.isBuffer(Buffer.from([1, 2, 3])));
+
+const buf1 = Buffer.from('This ');
+const buf2 = Buffer.from('is ');
+const buf3 = Buffer.from('a ');
+const buf4 = Buffer.from('test ');
+const buf5 = Buffer.from('!');
+const buf = Buffer.concat([buf1, buf2, buf3, buf4, buf5]);
+console.log(buf.toString());
+```
