@@ -498,3 +498,15 @@ fs.stat('./demo/34_stat.js', (err, stats) => {
   console.log(stats);
 });
 ```
+
+> rename
+
+```javascript
+const fs = require('fs');
+
+fs.rename('./demo/text', 'text.txt', err => {
+  if (err) throw err;
+  console.log('done!');
+});
+```
+
