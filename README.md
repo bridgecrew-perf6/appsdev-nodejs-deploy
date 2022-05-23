@@ -86,3 +86,9 @@ node --inspect-brk demo/01_run.js
 ```javascript
 node demo/05_main.js
 ```
+
+```javascript
+cd demo
+node 06_fs.js
+```
+
