@@ -385,6 +385,7 @@ ce.emit('error', new Error('oops!'), Date.now());
 ```
 
 > event with once
+
 ```javascript
 const EventEmitter = require('events');
 
