@@ -236,3 +236,15 @@ console.log('PATH:', process.env.PATH);
 console.log('delimiter', delimiter);
 console.log('win delimiter', win32.delimiter);
 ```
+
+> __dirname vs process.cwd() vs path.resolve('./')
+
+```javascript
+const path = require('path');
+const mod = require('./02_cusmod');
+console.log(mod.testVar);
+console.log('__dirname', __dirname);
+console.log('process.cwd()', process.cwd());
+console.log("path.resolve('./')", path.resolve('./'));
+```
+
