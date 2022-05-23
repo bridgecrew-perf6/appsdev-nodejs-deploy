@@ -175,3 +175,19 @@ global.testVar = 1000;
 ## NodeJS Basic API
 
 ### path
+
+- normalize join resolve
+- basename extname dirname
+- parse format
+- sep delimiter win32 posix
+
+> normalize
+
+```javascript
+const { normalize } = require('path');
+console.log(normalize('/usr//local/bin'));
+console.log(normalize('/usr//local/../bin'));
+```
+
+> join
+
