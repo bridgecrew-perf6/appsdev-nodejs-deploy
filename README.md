@@ -95,5 +95,6 @@ node 06_fs.js
 
 - 使用第三方模块
 ```javascript
+npm install chalk@2.0.1
 node demo/07_chalk.js
 ```
