@@ -1,4 +1,5 @@
 /* Buffer.byteLength, Buffer.isBuffer(), Buffer.concat() */
+
 console.log(Buffer.byteLength('test'));
 console.log(Buffer.byteLength('测试'));
 
