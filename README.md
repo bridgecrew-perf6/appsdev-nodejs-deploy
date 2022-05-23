@@ -181,7 +181,7 @@ global.testVar = 1000;
 - resolve
 - basename, extname, dirname
 - parse, format
-- sep delimiter win32 posix
+- sep, delimiter, win32, posix
 
 > normalize
 
@@ -224,4 +224,15 @@ const filePath = '/usr/local/node_modules/n/package.json';
 const ret = parse(filePath);
 console.log(ret);
 console.log(format(ret));
+```
+
+> sep, delimiter, win32, posix
+
+```javascript
+const { sep, delimiter, win32, posix } = require('path');
+console.log('sep:', sep);
+console.log('win sep:', win32.sep);
+console.log('PATH:', process.env.PATH);
+console.log('delimiter', delimiter);
+console.log('win delimiter', win32.delimiter);
 ```
