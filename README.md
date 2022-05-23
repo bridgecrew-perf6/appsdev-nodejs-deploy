@@ -176,7 +176,9 @@ global.testVar = 1000;
 
 ### path
 
-- normalize join resolve
+- normalize
+- join
+- resolve
 - basename extname dirname
 - parse format
 - sep delimiter win32 posix
@@ -190,4 +192,10 @@ console.log(normalize('/usr//local/../bin'));
 ```
 
 > join
+
+```javascript
+const { join } = require('path');
+console.log(join('/usr', 'local', 'bin/'));
+console.log(join('/usr', '../local', 'bin/'));
+```
 
