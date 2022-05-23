@@ -87,8 +87,13 @@ node --inspect-brk demo/01_run.js
 node demo/05_main.js
 ```
 
+- 使用 build-in 模块
 ```javascript
 cd demo
 node 06_fs.js
 ```
 
+- 使用第三方模块
+```javascript
+node demo/07_chalk.js
+```
