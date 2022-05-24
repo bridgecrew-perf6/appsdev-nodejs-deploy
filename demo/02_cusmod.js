@@ -1,4 +1,4 @@
-console.log('This is a module');
+console.log("This is a module");
 
 const testVar = 100;
 
