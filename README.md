@@ -158,7 +158,7 @@ global.testVar = 1000;
 > Inspector
 
 > #### [Chrome DevTools 55+, Microsoft Edge](https://nodejs.org/en/docs/guides/debugging-getting-started/)
-> 
+>
 > - Option 1: Open chrome://inspect in a Chromium-based browser or edge://inspect in Edge. Click the Configure button and ensure your target host and port are listed.
 >
 > - Option 2: Copy the devtoolsFrontendUrl from the output of /json/list (see above) or the --inspect hint text and paste into Chrome.
@@ -621,3 +621,27 @@ test();
 ```
 
 ## Tiny NodeJS Static Web Server
+
+### .editorconfig & .eslintrc.js & supervisor & .eslintignore, .npmignore, .gitignore
+
+### app.js
+
+```javascript
+const http = require('node:http');
+const conf = require('./config/defaultConfig');
+const chalk = require('chalk');
+const server = http.createServer();
+server.on('request', (req, res) => {
+	res.statusCode = 200;
+	res.setHeader('Content-Type', 'text/html');
+	res.write('<html>');
+	res.write('<body>');
+	res.write('Hello HTTP !');
+	res.write('</body>');
+	res.write('</html>');
+	res.end();
+});
+server.listen(conf.port, conf.hostname, () => {
+	console.log(chalk.red('Hello World'));
+});
+```
