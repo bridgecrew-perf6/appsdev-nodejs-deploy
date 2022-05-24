@@ -633,17 +633,17 @@ const conf = require('./config/defaultConfig');
 const chalk = require('chalk');
 const server = http.createServer();
 server.on('request', (req, res) => {
-	res.statusCode = 200;
-	res.setHeader('Content-Type', 'text/html');
-	res.write('<html>');
-	res.write('<body>');
-	res.write('Hello HTTP !');
-	res.write('</body>');
-	res.write('</html>');
-	res.end();
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  res.write('<html>');
+  res.write('<body>');
+  res.write('Hello HTTP !');
+  res.write('</body>');
+  res.write('</html>');
+  res.end();
 });
 server.listen(conf.port, conf.hostname, () => {
-	console.log(chalk.red('Hello World'));
+  console.log(chalk.red('Hello World'));
 });
 ```
 
@@ -657,26 +657,26 @@ const path = require('path');
 const fs = require('fs');
 const server = http.createServer();
 server.on('request', (req, res) => {
-	const filePath = path.join(conf.root, req.url);
-	fs.stat(filePath, (err, stats) => {
-		if (err) {
-			res.statusCode = 404;
-			res.setHeader('Content-Type', 'text/plain');
-			res.end(`${filePath} is not a directory or file`);
-			return;
-		}
-		if (stats.isFile()) {
-			res.statusCode = 200;
-			res.setHeader('Content-Type', 'text/plain');
-			fs.createReadStream(filePath).pipe(res);
-		} else if (stats.isDirectory()) {
-			fs.readdir(filePath, (err, files) => {
-				res.statusCode = 200;
-				res.setHeader('Content-Type', 'text/plain');
-				res.end(files.join(','));
-			});
-		}
-	});
+  const filePath = path.join(conf.root, req.url);
+  fs.stat(filePath, (err, stats) => {
+    if (err) {
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(`${filePath} is not a directory or file`);
+      return;
+    }
+    if (stats.isFile()) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      fs.createReadStream(filePath).pipe(res);
+    } else if (stats.isDirectory()) {
+      fs.readdir(filePath, (err, files) => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end(files.join(','));
+      });
+    }
+  });
 });
 server.listen(conf.port, conf.hostname, () => {
 	console.log(chalk.red('Hello World'));
@@ -694,11 +694,11 @@ const route = require('./helper/route');
 
 const server = http.createServer();
 server.on('request', (req, res) => {
-	const filePath = path.join(conf.root, req.url);
-	route(req, res, filePath);
+  const filePath = path.join(conf.root, req.url);
+  route(req, res, filePath);
 });
 server.listen(conf.port, conf.hostname, () => {
-	console.log(chalk.red('Hello World'));
+  console.log(chalk.red('Hello World'));
 });
 ```
 
