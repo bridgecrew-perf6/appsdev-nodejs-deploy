@@ -4,8 +4,8 @@ class CustomEvent extends EventEmitter {}
 
 const ce = new CustomEvent();
 ce.once('test', () => {
-  console.log('Test event');
+	console.log('Test event');
 });
 setInterval(() => {
-  ce.emit('test');
+	ce.emit('test');
 }, 500);

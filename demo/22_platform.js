@@ -1,4 +1,4 @@
-const { sep, delimiter, win32, posix } = require('path');
+const { sep, delimiter, win32 } = require('path');
 console.log('sep:', sep);
 console.log('win sep:', win32.sep);
 console.log('PATH:', process.env.PATH);

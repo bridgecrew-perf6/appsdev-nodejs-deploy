@@ -1,6 +1,6 @@
 /*
-normalize 
-join 
+normalize
+join
 resolve
 basename, dirname, extname
 parse, format

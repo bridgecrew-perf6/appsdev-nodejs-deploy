@@ -23,4 +23,3 @@ console.log(buf4.equals(buf6));
 
 console.log(buf4.indexOf('st'));
 console.log(buf4.indexOf('ast'));
-
