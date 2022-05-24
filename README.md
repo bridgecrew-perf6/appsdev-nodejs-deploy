@@ -623,7 +623,7 @@ test();
 ## Tiny NodeJS Static Web Server
 
 ### .editorconfig & .eslintrc.js & supervisor & .eslintignore, .npmignore, .gitignore
-Please check file directly
+Please check related files directly.
 
 ### app.js
 
