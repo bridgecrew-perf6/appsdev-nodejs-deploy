@@ -683,3 +683,49 @@ server.listen(conf.port, conf.hostname, () => {
 });
 ```
 
+### src/app.js && helper/route.js
+
+```javascript
+const http = require('node:http');
+const conf = require('./config/defaultConfig');
+const chalk = require('chalk');
+const path = require('path');
+const route = require('./helper/route');
+
+const server = http.createServer();
+server.on('request', (req, res) => {
+	const filePath = path.join(conf.root, req.url);
+	route(req, res, filePath);
+});
+server.listen(conf.port, conf.hostname, () => {
+	console.log(chalk.red('Hello World'));
+});
+```
+
+```javascript
+const fs = require('fs');
+const promisify = require('util').promisify;
+const stat = promisify(fs.stat);
+const readdir = promisify(fs.readdir);
+
+module.exports = async function (req, res, filePath) {
+	try {
+		const stats = await stat(filePath);
+		if (stats.isFile()) {
+			res.statusCode = 200;
+			res.setHeader('Content-Type', 'text/plain');
+			fs.createReadStream(filePath).pipe(res);
+		} else if (stats.isDirectory()) {
+			const files = await readdir(filePath);
+			res.statusCode = 200;
+			res.setHeader('Content-Type', 'text/plain');
+			res.end(files.join(','));
+		}
+	} catch (ex) {
+		res.statusCode = 404;
+		res.setHeader('Content-Type', 'text/plain');
+		res.end(`${filePath} is not a directory or file`);
+	}
+};
+```
+
