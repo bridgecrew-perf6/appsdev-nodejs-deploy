@@ -627,105 +627,18 @@ Please check related files directly.
 
 ### src/app.js
 
+> 1. 初始化 Web Server
+
 ```javascript
-const http = require('node:http');
-const conf = require('./config/defaultConfig');
 const chalk = require('chalk');
-const server = http.createServer();
-server.on('request', (req, res) => {
+const http = require('node:http');
+const config = require('./config/defaultConfig');
+const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.write('<html>');
-  res.write('<body>');
-  res.write('Hello HTTP !');
-  res.write('</body>');
-  res.write('</html>');
-  res.end();
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
 });
-server.listen(conf.port, conf.hostname, () => {
-  console.log(chalk.red('Hello World'));
+server.listen(config.port, config.hostname, () => {
+  console.log(chalk.green('Hello World'));
 });
 ```
-
-### src/app.js
-
-```javascript
-const http = require('node:http');
-const conf = require('./config/defaultConfig');
-const chalk = require('chalk');
-const path = require('path');
-const fs = require('fs');
-const server = http.createServer();
-server.on('request', (req, res) => {
-  const filePath = path.join(conf.root, req.url);
-  fs.stat(filePath, (err, stats) => {
-    if (err) {
-      res.statusCode = 404;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end(`${filePath} is not a directory or file`);
-      return;
-    }
-    if (stats.isFile()) {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      fs.createReadStream(filePath).pipe(res);
-    } else if (stats.isDirectory()) {
-      fs.readdir(filePath, (err, files) => {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end(files.join(','));
-      });
-    }
-  });
-});
-server.listen(conf.port, conf.hostname, () => {
-	console.log(chalk.red('Hello World'));
-});
-```
-
-### src/app.js && helper/route.js
-
-```javascript
-const http = require('node:http');
-const conf = require('./config/defaultConfig');
-const chalk = require('chalk');
-const path = require('path');
-const route = require('./helper/route');
-
-const server = http.createServer();
-server.on('request', (req, res) => {
-  const filePath = path.join(conf.root, req.url);
-  route(req, res, filePath);
-});
-server.listen(conf.port, conf.hostname, () => {
-  console.log(chalk.red('Hello World'));
-});
-```
-
-```javascript
-const fs = require('fs');
-const promisify = require('util').promisify;
-const stat = promisify(fs.stat);
-const readdir = promisify(fs.readdir);
-
-module.exports = async function (req, res, filePath) {
-  try {
-    const stats = await stat(filePath);
-    if (stats.isFile()) {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      fs.createReadStream(filePath).pipe(res);
-    } else if (stats.isDirectory()) {
-      const files = await readdir(filePath);
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end(files.join(','));
-    }
-  } catch (ex) {
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end(`${filePath} is not a directory or file`);
-  }
-};
-```
-
