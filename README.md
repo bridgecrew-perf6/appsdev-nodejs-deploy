@@ -642,7 +642,7 @@ server.listen(config.port, config.hostname, () => {
 });
 ```
 
-> Read File of Web Server
+> Add feature: support file
 
 ```javascript
 const chalk = require('chalk');
@@ -661,7 +661,7 @@ server.listen(config.port, config.hostname, () => {
 });
 ```
 
-> Read File and Directory of Web Server
+> Add feature: support directory
 
 ```javascript
 const chalk = require('chalk');
@@ -700,4 +700,49 @@ const server = http.createServer((req, res) => {
 server.listen(config.port, config.hostname, () => {
   console.log(chalk.green('Hello World'));
 });
+```
+> Add feature: support async
+
+```javascript
+/* src/app.js */
+const chalk = require('chalk');
+const http = require('node:http');
+const path = require('node:path');
+const config = require('./config/defaultConfig');
+const route = require('./helper/route');
+const server = http.createServer((req, res) => {
+  const filePath = path.join(config.root, req.url);
+  route(req, res, filePath);
+});
+server.listen(config.port, config.hostname, () => {
+  console.log(chalk.green('Hello World'));
+});
+```
+
+```javascript
+/* helper/route.js */
+const fs = require('node:fs');
+const promisify = require('util').promisify;
+const stat = promisify(fs.stat);
+const readdir = promisify(fs.readdir);
+module.exports = async (req, res, filePath) => {
+  try {
+    const stats = await stat(filePath);
+    if (stats.isFile()) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      const rs = fs.createReadStream(filePath);
+      rs.pipe(res);
+    } else if (stats.isDirectory()) {
+      const files = await readdir(filePath);
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(files.join(','));
+    }
+  } catch (ex) {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end(`${filePath} is not a directory or file.`);
+  }
+};
 ```
