@@ -623,7 +623,6 @@ test();
 ## Tiny NodeJS Static Web Server
 
 ### .editorconfig & .eslintrc.js & supervisor & .eslintignore, .npmignore, .gitignore
-Please check related files directly.
 
 ### src/app.js
 
@@ -662,3 +661,35 @@ server.listen(config.port, config.hostname, () => {
 });
 ```
 
+> Read File and Directory of Web Server
+
+```javascript
+const chalk = require('chalk');
+const http = require('node:http');
+const path = require('node:path');
+const fs = require('node:fs');
+const config = require('./config/defaultConfig');
+const server = http.createServer((req, res) => {
+  const filePath = path.join(config.root, req.url);
+  fs.stat(filePath, (err, stats) => {
+    if (err) {
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end(`${filePath} is not a directory or file.`);
+    }
+    if (stats.isFile()) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      const rs = fs.createReadStream(filePath);
+      rs.pipe(res);
+    } else if (stats.isDirectory()) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Directory');
+    }
+  });
+});
+server.listen(config.port, config.hostname, () => {
+  console.log(chalk.green('Hello World'));
+});
+```
