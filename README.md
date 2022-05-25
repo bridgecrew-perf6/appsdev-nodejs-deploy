@@ -711,6 +711,7 @@ const http = require('node:http');
 const path = require('node:path');
 const config = require('./config/defaultConfig');
 const route = require('./helper/route');
+
 const server = http.createServer((req, res) => {
   const filePath = path.join(config.root, req.url);
   route(req, res, filePath);
@@ -727,6 +728,7 @@ const fs = require('node:fs');
 const promisify = require('util').promisify;
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
+
 module.exports = async (req, res, filePath) => {
   try {
     const stats = await stat(filePath);
