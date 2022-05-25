@@ -705,6 +705,7 @@ server.listen(config.port, config.hostname, () => {
 
 ```javascript
 /* src/app.js */
+
 const chalk = require('chalk');
 const http = require('node:http');
 const path = require('node:path');
@@ -721,6 +722,7 @@ server.listen(config.port, config.hostname, () => {
 
 ```javascript
 /* helper/route.js */
+
 const fs = require('node:fs');
 const promisify = require('util').promisify;
 const stat = promisify(fs.stat);
