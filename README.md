@@ -627,7 +627,7 @@ Please check related files directly.
 
 ### src/app.js
 
-> 1. 初始化 Web Server
+> Initial Web Server
 
 ```javascript
 const chalk = require('chalk');
@@ -642,3 +642,4 @@ server.listen(config.port, config.hostname, () => {
   console.log(chalk.green('Hello World'));
 });
 ```
+
