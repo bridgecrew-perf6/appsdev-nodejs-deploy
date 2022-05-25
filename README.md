@@ -651,7 +651,6 @@ const http = require('node:http');
 const path = require('node:path');
 const fs = require('node:fs');
 const config = require('./config/defaultConfig');
-
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   const filePath = path.join(config.root, req.url);
