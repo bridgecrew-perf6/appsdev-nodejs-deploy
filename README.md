@@ -683,9 +683,17 @@ const server = http.createServer((req, res) => {
       const rs = fs.createReadStream(filePath);
       rs.pipe(res);
     } else if (stats.isDirectory()) {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('Directory');
+      fs.readdir(filePath, (err, files) => {
+        if (err) {
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'text/plain');
+          res.end(`${filePath} is not a directory or file.`);
+        } else {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'text/plain');
+          res.end(files.join(','));
+        }
+      });
     }
   });
 });
