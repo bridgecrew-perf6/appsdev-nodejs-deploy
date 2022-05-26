@@ -826,7 +826,7 @@ module.exports = async (req, res, filePath) => {
 </html>
 ```
 
-> Add feature: support MimeType
+> Add feature: support mimeType
 
 ```javascript
 /* helper/route.js */
@@ -877,7 +877,7 @@ module.exports = (filePath) => {
 };
 ```
 
-> Add feature: support Compress
+> Add feature: support compress
 
 ```javascript
 /* helper/route.js */
@@ -914,3 +914,6 @@ module.exports = (rs, req, res) => {
   }
 };
 ```
+
+> Add feature: support range
+
