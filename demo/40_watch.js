@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 fs.watch('./demo', {
-	recursive: true
+  recursive: true
 }, (eventType, filename) => {
-	console.log(eventType, filename);
+  console.log(eventType, filename);
 });

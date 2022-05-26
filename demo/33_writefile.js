@@ -10,6 +10,6 @@ const content = Buffer.from('This is a test.');
 // })
 
 fs.writeFile('./demo/text', content, err => {
-	if (err) throw err;
-	console.log('done!');
+  if (err) throw err;
+  console.log('done!');
 });

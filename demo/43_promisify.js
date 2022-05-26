@@ -10,11 +10,11 @@ const read = promisifiy(fs.readFile);
 // });
 
 async function test() {
-	try{
-		const content = await read('./demo/43_promisify.js');
-		console.log(content.toString());
-	} catch (ex) {
-		console.log(ex);
-	}
+  try{
+    const content = await read('./demo/43_promisify.js');
+    console.log(content.toString());
+  } catch (ex) {
+    console.log(ex);
+  }
 }
 test();

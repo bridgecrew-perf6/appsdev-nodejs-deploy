@@ -25,5 +25,8 @@
     "chalk": "^2.0.1",
     "eslint": "^8.16.0",
     "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
   }
 }

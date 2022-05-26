@@ -876,3 +876,41 @@ module.exports = (filePath) => {
   return mimeTypes[ext] || mimeTypes['txt'];
 };
 ```
+
+> Add feature: support Compress
+
+```javascript
+/* helper/route.js */
+
+let rs = fs.createReadStream(filePath);
+if (filePath.match(config.compress)) {
+  rs = compress(rs, req, res);
+}
+rs.pipe(res);
+```
+
+```javascript
+/* config/defaultConfig.js */
+
+module.exports = {
+  compress: /\.(html|js|css|md)/
+};
+```
+
+```javascript
+/* helper/compress.js */
+
+const { createGzip, createDeflate } = require('zlib');
+module.exports = (rs, req, res) => {
+  const acceptEncoding = req.headers['accept-encoding'];
+  if (!acceptEncoding || !acceptEncoding.match(/\b(gzip|deflate)\b/)) {
+    return;
+  } else if (acceptEncoding.match(/\bgzip\b/)) {
+    res.setHeader('Content-Encoding', 'gzip');
+    return rs.pipe(createGzip());
+  } else if (acceptEncoding.match(/\bdeflate\b/)) {
+    res.setHeader('Content-Encoding', 'deflate');
+    return rs.pipe(createDeflate());
+  }
+};
+```
