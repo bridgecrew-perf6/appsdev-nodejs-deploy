@@ -917,3 +917,89 @@ module.exports = (rs, req, res) => {
 
 > Add feature: support range
 
+```javascript
+/* helper/route.js */
+
+const { code, start, end } = range(stats.size, req, res);
+if (code == 200) {
+  res.statusCode = 200;
+  rs = fs.createReadStream(filePath);
+} else {
+  res.statusCode = 206;
+  rs = fs.createReadStream(filePath, {start, end});
+}
+```
+
+```javascript
+/* helper/range.js */
+
+module.exports = (totalSize, req, res) => {
+  const range = req.headers['range'];
+  if (!range) {
+    return {code: 200};
+  }
+  const size = range.match(/bytes=(\d*)-(\d*)/);
+  const end = size[2] || totalSize - 1;
+  const start = size[1] || totalSize - end;
+  if (start > end || start < 0 || end > totalSize) {
+    return {code: 200};
+  }
+  res.setHeader('Accept-Ranges', 'bytes');
+  res.setHeader('Cotent-Range', `bytes ${start}-${end}/${totalSize}`);
+  res.setHeader('Content-Length', end - start);
+  return {
+    code: 206,
+    start: parseInt(start),
+    end: parseInt(end)
+  };
+};
+```
+
+> Add feature: support cache
+
+```javascript
+/* helper/route.js */
+
+if (isFresh(stats, req, res)) {
+  res.statusCode = 304;
+  res.end();
+  return;
+}
+```
+
+```javascript
+/* helper/cache.js */
+
+const { cache } = require('../config/defaultConfig');
+
+function refreshRes(stats, res) {
+  const { maxAge, expires, cacheControl, lastModified, etag } = cache;
+  if (expires) {
+    res.setHeader('Expires', (new Date(Date.now() + maxAge * 1000).toUTCString()));
+  }
+  if (cacheControl) {
+    res.setHeader('Cache-Control', `public, max-age = ${maxAge}`);
+  }
+  if (lastModified) {
+    res.setHeader('Last-Modified', stats.mtime.toUTCString());
+  }
+  if (etag) {
+    res.setHeader('ETag', `${stats.size}-${stats.mtime}`);
+  }
+}
+module.exports = function isFresh(stats, req, res) {
+  refreshRes(stats, res);
+  const lastModified = req.headers['if-modified-since'];
+  const etag = req.headers['if-none-match'];
+  if (!lastModified && !etag) {
+    return false;
+  }
+  if (lastModified && lastModified !== res.getHeader('Last-Modified')) {
+    return false;
+  }
+  if (etag && etag !== res.getHeader('ETag')) {
+    return false;
+  }
+  return true;
+};
+```
