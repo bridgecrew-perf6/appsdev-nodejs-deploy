@@ -9,13 +9,12 @@ const tplPath = path.join(__dirname, '../template/dir.tpl');
 const source = fs.readFileSync(tplPath);
 const template = Handlebars.compile(source.toString());
 
-const config = require('../config/defaultConfig');
 const mime = require('./mime');
 const compress = require('./compress');
 const range = require('./range');
 const isFresh = require('./cache');
 
-module.exports = async (req, res, filePath) => {
+module.exports = async (req, res, filePath, config) => {
   try {
     const stats = await stat(filePath);
     if (stats.isFile()) {
