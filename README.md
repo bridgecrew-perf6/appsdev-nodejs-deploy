@@ -1021,7 +1021,7 @@ npm i -g appsdev-nodejs-deploy
 
 ```
 appsdev-nodejs-deploy # 把当前文件夹作为静态资源服务器根目录
-appsdev-nodejs-deploy -p 8080 # 设置端口号为 8080
-appsdev-nodejs-deploy -h localhost # 设置 host 为 localhost
+appsdev-nodejs-deploy -p 8080 # 设置端口号为8080
+appsdev-nodejs-deploy -h localhost # 设置host为localhost
 appsdev-nodejs-deploy -d /usr # 设置根目录为 /usr
 ```
