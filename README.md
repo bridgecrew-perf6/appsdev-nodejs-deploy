@@ -624,11 +624,11 @@ test();
 
 ### .editorconfig & .eslintrc.js & supervisor & .eslintignore, .npmignore, .gitignore
 
-### src/app.js
-
 > Initial Web Server
 
 ```javascript
+/* src/app.js */
+
 const chalk = require('chalk');
 const http = require('node:http');
 const config = require('./config/defaultConfig');
@@ -645,6 +645,8 @@ server.listen(config.port, config.hostname, () => {
 > Add feature: support file
 
 ```javascript
+/* src/app.js */
+
 const chalk = require('chalk');
 const http = require('node:http');
 const path = require('node:path');
@@ -664,6 +666,8 @@ server.listen(config.port, config.hostname, () => {
 > Add feature: support directory
 
 ```javascript
+/* src/app.js */
+
 const chalk = require('chalk');
 const http = require('node:http');
 const path = require('node:path');
@@ -701,6 +705,7 @@ server.listen(config.port, config.hostname, () => {
   console.log(chalk.green('Hello World'));
 });
 ```
+
 > Add feature: support async
 
 ```javascript
@@ -1002,4 +1007,21 @@ module.exports = function isFresh(stats, req, res) {
   }
   return true;
 };
+```
+
+### CLI
+
+> Install
+
+```
+npm i -g appsdev-nodejs-deploy
+```
+
+> Use Methods
+
+```
+appsdev-nodejs-deploy # 把当前文件夹作为静态资源服务器根目录
+appsdev-nodejs-deploy -p 8080 # 设置端口号为 8080
+appsdev-nodejs-deploy -h localhost # 设置 host 为 localhost
+appsdev-nodejs-deploy -d /usr # 设置根目录为 /usr
 ```
